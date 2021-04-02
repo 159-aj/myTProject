@@ -14,5 +14,15 @@ export class RegistrationService {
 
     return this._http.post<any>("http://localhost:8000/login",user)
   }
+
+  public registerUserFromRemote(user : User): Observable<any>{
+
+    return this._http.post<any>("http://localhost:8000/registeruser",user);
+  }
+
+  handleError(error: Response){
+    console.error("ert");
+  }
+
 }
 

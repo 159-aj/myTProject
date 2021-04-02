@@ -24,8 +24,12 @@ export class LoginComponent implements OnInit {
       this._router.navigate(['/loginsuccess'])
     }, 
       error =>{console.log("exception occured");
-      this.msg="bad credentials";
+      this.msg="wrong credentials";
     }
       )
+  }
+
+  gotoregistration(){
+    this._router.navigate(['/registration']);
   }
 }
