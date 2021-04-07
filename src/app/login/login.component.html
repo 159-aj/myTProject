@@ -1,8 +1,8 @@
 <!-- <p>login works!</p> -->
 <div class="pt-4">
 <div class="container" style="background-color: rgb(179, 255, 179)">
-  
-    <h2 class="py-4">Login form</h2>
+  <h2 class="py-4">Fault Inspection tool Login form</h2>
+    <!-- <h2 class="py-4"></h2> -->
     <form class="form-horizontal" #loginform="ngForm" (ngSubmit)="loginUser()">
         <small class="text-danger">{{msg}}</small>
       <div class="form-group">
@@ -44,11 +44,12 @@
         <!-- <small (click)="gotoregistration()">Not a member? Register</small> -->
         <!-- <p>Not a member? <a (click)="gotoregistration()">Register</a></p> -->
         <!-- <p (click)="gotoregistration()">Not a member? register</p> -->
-        <p [routerLink]="['/registration']" >Not a member? register</p>
+        <!-- <p [routerLink]="['/registration']" >Not a member? register</p> -->
+        <span class="psw">Not a member? <a href="/registration">register</a></span>
         <p>or sign up with:</p>
         <button type="button" class="btn btn-primary btn-floating mx-1">
-          <i class="fab fa-facebook-f"></i>
-        </button>
+            <i class="fab fa-facebook-f"></i>
+          </button>
     
         <button type="button" class="btn btn-primary btn-floating mx-1">
           <i class="fab fa-google"></i>

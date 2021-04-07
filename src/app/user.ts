@@ -1,7 +1,7 @@
 export class User {
     // REMOVE ALL EXCLAMATORY MARKS
     id!: number;
-    emailId!: string;             // REMOVE ALL EXCLAMATORY MARKS
+    emailId!: string;            
     username!: string;
     password! : string ; 
     
