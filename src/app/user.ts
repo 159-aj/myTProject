@@ -1,9 +1,9 @@
 export class User {
     // REMOVE ALL EXCLAMATORY MARKS
-    id!: number;
-    emailId!: string;            
-    username!: string;
-    password! : string ; 
+    id?: number;
+    emailId?: string;            
+    username?: string;
+    password?: string ; 
     
     // constructor(id : number,emailId :string,username : string,password : string){
     //     this.id=id;

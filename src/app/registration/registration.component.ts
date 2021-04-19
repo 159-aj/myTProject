@@ -9,27 +9,34 @@ import { User } from '../user';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-
+  alert:boolean=false
   user:any= new User();
   msg:any='';
 
   constructor(private _service :RegistrationService, private _router: Router) { }
 
   ngOnInit(): void {
+    
   }
-
+  
   registerUser(){
+    // console.log(this.user);
     this._service.registerUserFromRemote(this.user).subscribe(
       data=>{
         console.log("response received");
-      this._router.navigate(['/login'])
+        this.alert=true
+        // console.log(data);
+        // this._router.navigate(['/login'])
       } ,
+      
       error =>{
         console.log("exception occured");
       this.msg=error.error;
       
-      }
+      },
+     
     )
   }
+  
 
 }

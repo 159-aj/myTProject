@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginsuccessComponent } from './loginsuccess/loginsuccess.component';
+import { CookieService } from 'ngx-cookie-service';
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 @NgModule({
@@ -26,7 +27,9 @@ import { LoginsuccessComponent } from './loginsuccess/loginsuccess.component';
     AppRoutingModule,
     // FontAwesomeModule
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

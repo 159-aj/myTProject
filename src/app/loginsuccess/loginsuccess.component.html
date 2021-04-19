@@ -1,5 +1,57 @@
-
-<nav class="navbar navbar-expand-md bg-dark navbar-dark justify-content-between">
+<style>
+    #f {
+      background-color: #f44336;
+      color: white;
+      padding: 14px 25px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+   
+    </style>
+<nav class="navbar navbar-expand-md bg-primary navbar-dark justify-content-between">
     <a class="navbar-brand  px-5" href="#">Fault Inspection tool</a>
-    <span class="psw  px-5"> <a href="/login">logout</a></span>
+    <!-- <span class="psw  px-5"> <a href="/login">logout</a></span>
+    <button class="btn btn-success"><a href="/login"></a>logout</button> -->
+    <!-- <h1>{{user.username}}</h1> -->
+    <button (click)="logout()" class=" px-5" id="f" target="_blank">logout {{user}}</button>
+    
 </nav>
+
+
+<div class="container">
+
+    <div class="justify-content-around py-5">
+        <a (click)="handleClick()" href="javascript:undefined">
+            <i class="la la-upload"></i>
+        </a>
+      
+        <input class="hidden" type="file" id="upload-file" name="upload-file" accept=".csv" ngf-max-size="2MB" (change)="addAttachment($event)">
+     
+         <button class="btn btn-success">Scan</button>
+    </div>
+    <h5>LAST SCAN LOG</h5>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th> File Name </th>
+                <th> Time </th>
+                <th> date </th>
+                <th> detected </th>
+
+                    
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+        
+            </tr>
+        </tbody>
+
+
+    </table>
+</div>

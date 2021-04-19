@@ -1,5 +1,5 @@
 <!-- <p>login works!</p> -->
-<div class="pt-4">
+<div class="pt-4" *ngIf="!loginCompleted">
 <div class="container" style="background-color: rgb(179, 255, 179)">
   <h2 class="py-4">Fault Inspection tool Login form</h2>
     <!-- <h2 class="py-4"></h2> -->
@@ -65,4 +65,8 @@
       </div>
     </form>
   </div>
+
+<!-- <app-loginsuccess [user] = "user" *ngIf="loginCompleted">
+
+</app-loginsuccess> -->
 </div>

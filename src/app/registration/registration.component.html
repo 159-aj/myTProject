@@ -2,7 +2,11 @@
 <div class="pt-4">
     <div class="container" style="background-color: rgb(179, 255, 179)">
       
-        <h2 class="py-4">Registration form</h2>   
+        <h2 class="py-4">Registration form</h2>  
+        <div *ngIf="alert" class="alert alert-success alert-dismissible" role="alert">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Success!</strong> registered successfully.
+        </div> 
         <form #registrationform="ngForm" (ngSubmit)="registerUser()">
             <small [class.text-danger]="msg?.status==500">{{msg?.message}}</small>
           <div class="form-group">
