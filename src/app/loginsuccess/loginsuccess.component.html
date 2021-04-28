@@ -9,45 +9,46 @@
     }
    
     </style>
-<nav class="navbar navbar-expand-md bg-primary navbar-dark justify-content-between">
+<nav class="navbar navbar-expand-md bg-primary navbar-dark d-flex justify-content-between">
     <a class="navbar-brand  px-5" href="#">Fault Inspection tool</a>
-    <!-- <span class="psw  px-5"> <a href="/login">logout</a></span>
+    <!-- <span class="psw  px-5"> <a href="/login">logout</a>class="d-flex justify-content-around"</span>
     <button class="btn btn-success"><a href="/login"></a>logout</button> -->
     <!-- <h1>{{user.username}}</h1> -->
-    <button (click)="logout()" class=" px-5" id="f" target="_blank">logout {{user}}</button>
+    <button (click)="logout()" class=" px-5" id="f" target="_blank">Logout {{user}}</button>
     
 </nav>
 
 
-<div class="container">
-
-    <div class="justify-content-around py-5">
+<div class="container py-2">
+   <div class="row">
+      <mat-card class="py-2">
+        <div class="justify-content-around py-3">
         <a (click)="handleClick()" href="javascript:undefined">
-            <i class="la la-upload"></i>
+            <i class=" la la-upload"></i>
         </a>
-      
-        <input class="hidden" type="file" id="upload-file" name="upload-file" accept=".csv" ngf-max-size="2MB" (change)="addAttachment($event)">
-     
-         <button class="btn btn-success">Scan</button>
-    </div>
-    <h5>LAST SCAN LOG</h5>
+        <input type="file" (change)="addAttachment($event)" />
+        <button class="btn btn-success" (click)="onFileChanged()">Scan</button>
+        
+        </div>
+      </mat-card>
+      <div></div>
+    </div>  
+    <h4 class="font-weight-bold py-3">LAST SCAN LOG</h4>
     <table class="table table-striped">
         <thead>
             <tr>
                 <th> File Name </th>
-                <th> Time </th>
-                <th> date </th>
-                <th> detected </th>
+                <th> Date </th>
+                <th> Detected </th>
 
                     
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td> </td>
-                <td> </td>
-                <td> </td>
-                <td> </td>
+            <tr *ngFor="let res of result">
+                <td>{{res.fileName}} </td>
+                <td>{{res.date}} </td>
+                <td>{{res.response}} </td>
         
             </tr>
         </tbody>
@@ -55,3 +56,6 @@
 
     </table>
 </div>
+
+
+

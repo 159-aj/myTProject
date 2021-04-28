@@ -1,72 +1,209 @@
 <!-- <p>login works!</p> -->
-<div class="pt-4" *ngIf="!loginCompleted">
-<div class="container" style="background-color: rgb(179, 255, 179)">
-  <h2 class="py-4">Fault Inspection tool Login form</h2>
-    <!-- <h2 class="py-4"></h2> -->
-    <form class="form-horizontal" #loginform="ngForm" (ngSubmit)="loginUser()">
-        <small class="text-danger">{{msg}}</small>
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="email">Email:</label>
-        <div class="col-sm-10">
-          <input type="email" class="form-control" placeholder="Enter email" name="email" [(ngModel)]="user.emailId"
-          required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #email="ngModel" [class.is-invalid]="email.invalid && email.touched"
-          >
-          <!-- <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email Id is required</small> -->
-          <div *ngIf="email.errors && (email.invalid && email.touched) ">
-            <small class="text-danger" *ngIf="email.errors.required">Email Id is required</small>
-            <small class="text-danger" *ngIf="email.errors.pattern">Enter the valid Email Id</small>
+
+<!-- <style>
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+  }
+  </style>
+  
+  
+<nav class="navbar navbar-expand-md bg-primary navbar-dark d-flex justify-content-between py-3">
+  <a class="navbar-brand  px-5" href="#">Fault Inspection Tool</a>
+
+</nav>
+<div class="row">
+  <div class="col-sm-7" *ngIf="!loginCompleted">
+  <div class="container-fluid" style="background-color: rgb(179, 255, 179)">
+    <h2 class="py-4"> Login form</h2>
+     
+      <form class="form-horizontal" #loginform="ngForm" (ngSubmit)="loginUser()">
+          <small class="text-danger">{{msg}}</small>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="email">Email:</label>
+          <div class="col-sm-10">
+            <div class="example-container">
+              <mat-form-field appearance="fill">
+              
+                <input matInput placeholder="pat@example.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" [(ngModel)]="user.emailId" required #email="ngModel">
+                <mat-error *ngIf="email.errors?.required">Email Id is required</mat-error>
+                <mat-error *ngIf="email.errors?.pattern">Enter the valid Email Id</mat-error>
+              </mat-form-field>
+            </div>
+           
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="pwd">Password:</label>
-        <div class="col-sm-10">          
-          <input type="password" class="form-control" placeholder="Enter password" name="password" [(ngModel)]="user.password"
-          required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" #password="ngModel" [class.is-invalid]="password.invalid && password.touched"
-          >
-          <small class="text-danger" [class.d-none]="password.valid || password.untouched">password is required</small>
-        </div>
-      </div>
-      <div class="form-group">        
-        <div class="col-sm-offset-2 col-sm-10">
-          <div class="checkbox">
-            <label><input type="checkbox" name="remember"> Remember me</label>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="pwd">Password:</label>
+          <div class="col-sm-10">          
+            <input type="password" class="form-control" placeholder="Enter password" name="password" [(ngModel)]="user.password"
+            required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" #password="ngModel" [class.is-invalid]="password.invalid && password.touched"
+            >
+            <small class="text-danger" [class.d-none]="password.valid || password.untouched">password is required</small>
           </div>
         </div>
-      </div>
-      <div class="form-group">        
-        <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-info">login</button>
+        <div class="form-group">        
+          <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+              <label><input type="checkbox" name="remember"> Remember me</label>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="text-center p-3">
-        <!-- <p>Not a member? <a href="#!">Register</a></p> -->
-        <!-- <small (click)="gotoregistration()">Not a member? Register</small> -->
-        <!-- <p>Not a member? <a (click)="gotoregistration()">Register</a></p> -->
-        <!-- <p (click)="gotoregistration()">Not a member? register</p> -->
-        <!-- <p [routerLink]="['/registration']" >Not a member? register</p> -->
-        <span class="psw">Not a member? <a href="/registration">register</a></span>
-        <p>or sign up with:</p>
-        <button type="button" class="btn btn-primary btn-floating mx-1">
-            <i class="fab fa-facebook-f"></i>
+        <div class="form-group">        
+          <div class="col-sm-offset-2 col-sm-10">
+         
+            <button mat-raised-button color="primary">LogIn</button>
+          </div>
+        </div>
+        <div class="text-center p-3">
+        
+          <span class="psw">Not a member? <a href="/registration">register</a></span>
+          <p>or sign up with:</p>
+          <button type="button" class="btn btn-primary btn-floating mx-1">
+              <i class="fab fa-facebook-f"></i>
+            </button>
+      
+          <button type="button" class="btn btn-primary btn-floating mx-1">
+            <i class="fab fa-google"></i>
           </button>
-    
-        <button type="button" class="btn btn-primary btn-floating mx-1">
-          <i class="fab fa-google"></i>
-        </button>
-    
-        <button type="button" class="btn btn-primary btn-floating mx-1">
-          <i class="fab fa-twitter"></i>
-        </button>
-    
-        <button type="button" class="btn btn-primary btn-floating mx-1">
-          <i class="fab fa-github"></i>
-        </button>
-      </div>
-    </form>
+      
+          <button type="button" class="btn btn-primary btn-floating mx-1">
+            <i class="fab fa-twitter"></i>
+          </button>
+      
+          <button type="button" class="btn btn-primary btn-floating mx-1">
+            <i class="fab fa-github"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+
   </div>
 
-<!-- <app-loginsuccess [user] = "user" *ngIf="loginCompleted">
+  <div class="col-sm">
+    <div class="text-center">
+      <img src="./assets/images/logo.png"
+         class="img-responsive center-block"
+          />
+    </div>
+  </div>
+</div> -->
 
-</app-loginsuccess> -->
+<!-- <div class="footer">
+  <p>Footer</p>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-md bg-primary navbar-dark d-flex justify-content-between py-3">
+  <a class="navbar-brand  px-5" style="text-align:center;" href="#">Fault Inspection Tool</a>
+</nav>
+<div class="row">
+<div class="col-sm-7" *ngIf="!loginCompleted">
+  <div class="container" style="background-color: white">
+    <h2 class="py-4">Login form</h2>
+      <!-- <h2 class="py-4"></h2> -->
+      <form class="form-horizontal" #loginform="ngForm" (ngSubmit)="loginUser()">
+          <small class="text-danger">{{msg}}</small>
+          
+        <div class="form-group">
+          <label class="control-label font-weight-bold col-sm-2" for="email">Email:</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control" placeholder="Enter email" name="email" [(ngModel)]="user.emailId"
+            required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #email="ngModel" [class.is-invalid]="email.invalid && email.touched"
+            >
+             <div *ngIf="email.errors && (email.invalid && email.touched) ">
+              <small class="text-danger" *ngIf="email.errors.required">Email Id is required</small>
+              <small class="text-danger" *ngIf="email.errors.pattern">Enter the valid Email Id</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label font-weight-bold col-sm-2" for="pwd">Password:</label>
+          <div class="col-sm-10">          
+            <input type="password" class="form-control" placeholder="Enter password" name="password" [(ngModel)]="user.password"
+            required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" #password="ngModel" [class.is-invalid]="password.invalid && password.touched"
+            >
+            <small class="text-danger" [class.d-none]="password.valid || password.untouched">password is required</small>
+          </div>
+        </div>
+        <div class="form-group">        
+          <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+              <label><input type="checkbox" name="remember"> Remember me</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">        
+          <div class="col-sm-offset-2 col-sm-10">
+            <!-- <button type="submit" class="btn btn-info">login</button> -->
+            <button mat-raised-button color="primary">LogIn</button>
+          </div>
+        </div>
+        <div class="text-center p-3">
+        <span class="psw font-weight-bold">Not a member? <a href="/registration">register</a></span>
+      </div>
+        <!-- <div class="text-center p-3">
+        
+          <span class="psw">Not a member? <a href="/registration">register</a></span>
+          <p>or sign up with:</p>
+          <button type="button" class="btn btn-primary btn-floating mx-1">
+              <i class="fab fa-facebook-f"></i>
+            </button>
+      
+          <button type="button" class="btn btn-primary btn-floating mx-1">
+            <i class="fab fa-google"></i>
+          </button>
+      
+          <button type="button" class="btn btn-primary btn-floating mx-1">
+            <i class="fab fa-twitter"></i>
+          </button>
+      
+          <button type="button" class="btn btn-primary btn-floating mx-1">
+            <i class="fab fa-github"></i>
+          </button>
+        </div> -->
+      </form>
+    </div>
+  </div>
+
+  <div class="col-sm">
+    <div class="text-center">
+      <img src="./assets/images/logo.png"
+         class="img-responsive center-block"
+          />
+    </div>
+  </div>
+
 </div>
+
+
+
+

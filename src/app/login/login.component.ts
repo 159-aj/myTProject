@@ -34,11 +34,21 @@ export class LoginComponent implements OnInit {
     if(user) {
       this._router.navigate(['/loginsuccess']);
     }
-  }
 
+    
+  }
+  welcome(){
+    this._service.welcome().subscribe(
+      data=>{console.log(data);}
+    )
+  }
+  
   sendUserName(username: string): void {
     // console.log(username);
     this._service.sendUserName(username);
+  }
+  sendUserId(id:number):void{
+    this._service.sendUserId(id);
   }
   loginUser() {
     this._service.loginUserFromRemote(this.user).subscribe(
@@ -46,6 +56,7 @@ export class LoginComponent implements OnInit {
         console.log('response received');
         // this.notificationService.success('submitter');
         this.sendUserName(data.username);
+        this.sendUserId(data.id);
         this._router.navigate(['/loginsuccess']);
       },
       (error) => {
